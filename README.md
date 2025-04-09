@@ -1,7 +1,7 @@
 Capstone Project
 ***Student-Oriented Accommodation & Food Solution Platform***
 
-**Project Overview*
+*Project Overview*
 
 This project aims to develop a web-based platform that connects students looking for accommodation with those who have vacant rooms or flats. It also integrates food solutions by collaborating with local tiffin services. The platform specifically targets students and working professionals facing accommodation and food challenges, particularly in Jagatpura, Jaipur, a hub of multiple universities and schools.
 
