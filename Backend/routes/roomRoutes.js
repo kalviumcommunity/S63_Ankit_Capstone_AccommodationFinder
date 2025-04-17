@@ -7,6 +7,8 @@ const { createRoom, getAllRooms } = require("../controllers/roomController");
 //     createRoom(req, res);
 //   });
 router.post("/rooms", createRoom);
+
+
 router.get("/", getAllRooms);
 
 module.exports = router;
