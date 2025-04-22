@@ -14,8 +14,10 @@ router.post("/rooms", async (req, res) => {
   }
 });
 
+
+
 // ✅ GET - Fetch all rooms
-router.get("/rooms", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const rooms = await Room.find();
     res.status(200).json(rooms);
@@ -24,6 +26,8 @@ router.get("/rooms", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
+
 
 // ✅ PUT - Update a room by ID
 router.put("/rooms/:id", async (req, res) => {
@@ -43,6 +47,8 @@ router.put("/rooms/:id", async (req, res) => {
   }
 });
 
+
+
 // ✅ DELETE - Delete a room by ID
 router.delete("/rooms/:id", async (req, res) => {
   try {
@@ -58,3 +64,4 @@ router.delete("/rooms/:id", async (req, res) => {
 });
 
 module.exports = router;
+
