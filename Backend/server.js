@@ -20,9 +20,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes Import
+// Routes
 const roomRoutes = require("./routes/roomRoutes");
-app.use("/api", roomRoutes); // All routes will be under /api
+const userRoutes = require("./routes/userRoutes");
+
+app.use("/api", roomRoutes);
+app.use("/api", userRoutes); 
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)

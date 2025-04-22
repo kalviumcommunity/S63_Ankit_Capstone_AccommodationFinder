@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const roomSchema = new mongoose.Schema({
   roomType: {
@@ -12,8 +12,12 @@ const roomSchema = new mongoose.Schema({
   location: {
     type: String,
     required: true,
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
   }
+}, 
+{ timestamps: true });
 
-}, { timestamps: true });
-
-module.exports = mongoose.model("Room", roomSchema);
+module.exports = mongoose.model('Room', roomSchema);
