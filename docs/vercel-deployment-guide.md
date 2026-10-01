@@ -1,97 +1,80 @@
 # Vercel Deployment Guide
 
-This guide provides step-by-step instructions to deploy the **Accommodation Finder Capstone** project (Backend REST API & Frontend React SPA) on **Vercel**.
+This guide provides step-by-step instructions to deploy the **Accommodation Finder Capstone** project on **Vercel**.
 
 ---
 
-## 🏗️ Architecture & Deployment Strategy
+## 🌟 Recommended: Unified Single-Project Deployment (Frontend + Backend Together)
 
-The application is structured into two separate services:
-1. **Backend Server (`Backend/`)**: Express v5 REST API configured to run as a **Vercel Serverless Function** via [`Backend/vercel.json`](file:///Users/manghnaniankit/Desktop/S63_Ankit_Capstone_AccommodationFinder/Backend/vercel.json).
-2. **Frontend Client (`Frontend/client/`)**: React 19 + Vite 6 Single Page Application deployed as a static web project via [`Frontend/client/vercel.json`](file:///Users/manghnaniankit/Desktop/S63_Ankit_Capstone_AccommodationFinder/Frontend/client/vercel.json).
+Thanks to the root [`vercel.json`](file:///Users/manghnaniankit/Desktop/S63_Ankit_Capstone_AccommodationFinder/vercel.json), you can deploy **both the React frontend and Express backend together in a single Vercel project** under one domain!
 
----
-
-## 🛠️ Prerequisites Before Deploying
-
-1. **Vercel Account**: Sign up at [vercel.com](https://vercel.com) using your GitHub account.
-2. **MongoDB Atlas Database**: Ensure your MongoDB connection URI (`mongodb+srv://...`) is active.
-3. **MongoDB Network Whitelist**:
-   > [!IMPORTANT]
-   > Vercel Serverless Functions use dynamic IP addresses. You **MUST** whitelist `0.0.0.0/0` (Allow Access from Anywhere) in **MongoDB Atlas** $\rightarrow$ **Network Access** $\rightarrow$ **Add IP Address**. Otherwise, database queries will time out (`buffering timed out after 10000ms`).
+### Advantages:
+- **Single URL**: Both frontend and backend share the exact same domain (e.g., `https://accommodation-finder.vercel.app`).
+- **No CORS Issues**: Frontend can make requests directly to `/api/...` without cross-origin blocks.
+- **One-click Deploy**: Only one Vercel project to configure and monitor.
 
 ---
 
-## 🚀 Step 1: Deploy Backend REST API on Vercel
+### Step-by-Step Instructions:
 
-### Method A: Via Vercel Web Dashboard (Recommended)
-
-1. Go to [vercel.com/new](https://vercel.com/new).
-2. Import your GitHub repository: `kalviumcommunity/S63_Ankit_Capstone_AccommodationFinder`.
-3. Configure Project Settings:
-   - **Project Name**: `accommodation-finder-backend`
-   - **Framework Preset**: Select **Other** (or Node.js)
-   - **Root Directory**: Click **Edit** and set to `Backend`
-4. Expand **Environment Variables** and add:
-   - `MONGO_URI`: `mongodb+srv://<username>:<password>@cluster.mongodb.net/<dbname>?retryWrites=true&w=majority`
-   - `JWT_SECRET`: `your_secure_jwt_secret_key_here`
+1. **Go to Vercel**:
+   - Open [vercel.com/new](https://vercel.com/new) and log in with GitHub.
+2. **Import Repository**:
+   - Find and import `kalviumcommunity/S63_Ankit_Capstone_AccommodationFinder`.
+3. **Configure Project**:
+   - **Root Directory**: Leave as `./` (Root directory of the repo — do NOT change it).
+   - **Framework Preset**: Leave as **Other**.
+4. **Add Environment Variables**:
+   - `MONGO_URI`: Your MongoDB Atlas URI (e.g., `mongodb+srv://<username>:<password>@cluster0.abc.mongodb.net/<dbname>?retryWrites=true&w=majority`)
+   - `JWT_SECRET`: Your secure secret key
    - `PORT`: `5001`
-5. Click **Deploy**.
-6. Once deployment completes, copy your live **Backend Production URL** (e.g. `https://accommodation-finder-backend.vercel.app`).
-
-### Method B: Via Vercel CLI
-
-```bash
-cd Backend
-npm install -g vercel  # Optional if CLI not installed
-vercel
-```
-Follow the prompts, set Root Directory to `Backend`, and add environment variables when prompted.
+5. **Click Deploy**:
+   - Vercel will automatically build the React Vite client using `@vercel/static-build` and compile the Express backend using `@vercel/node`.
+6. **How Routes Work**:
+   - `https://your-app.vercel.app/` $\rightarrow$ React SPA
+   - `https://your-app.vercel.app/api/rooms` $\rightarrow$ Express Room API
+   - `https://your-app.vercel.app/api/auth/*` $\rightarrow$ Express Auth API
+   - `https://your-app.vercel.app/assets/*` $\rightarrow$ Bundled JS/CSS static assets
 
 ---
 
-## 🚀 Step 2: Deploy Frontend React SPA on Vercel
+## 🛠️ Critical Prerequisite: MongoDB Atlas IP Access
 
-### Method A: Via Vercel Web Dashboard (Recommended)
-
-1. Go to [vercel.com/new](https://vercel.com/new).
-2. Import the same GitHub repository: `kalviumcommunity/S63_Ankit_Capstone_AccommodationFinder`.
-3. Configure Project Settings:
-   - **Project Name**: `accommodation-finder-frontend`
-   - **Framework Preset**: **Vite**
-   - **Root Directory**: Click **Edit** and set to `Frontend/client`
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-4. Expand **Environment Variables** and add:
-   - `VITE_API_BASE_URL`: `https://accommodation-finder-backend.vercel.app` (Your Backend Vercel URL from Step 1)
-5. Click **Deploy**.
-6. Your React client will be live at a URL like `https://accommodation-finder-frontend.vercel.app`.
+> [!IMPORTANT]
+> Because Vercel functions run in a serverless environment with dynamic IP addresses, you **must whitelist `0.0.0.0/0`**:
+> 1. Log in to [MongoDB Atlas](https://cloud.mongodb.com/).
+> 2. Go to **Security** $\rightarrow$ **Network Access**.
+> 3. Click **Add IP Address**.
+> 4. Click **Allow Access from Anywhere** (`0.0.0.0/0`).
+> 5. Click **Confirm**.
 
 ---
 
-## 🔍 Step 3: Verification & Health Checks
+## 🔍 Verification Checklist
 
-After completing deployment, verify your live endpoints:
+After deployment completes:
 
-1. **Backend Health Check**:
+1. **Test Frontend**:
+   - Visit `https://<your-project>.vercel.app/` in your browser.
+   - The UI should display the Navbar, RoomCard, and Footer.
+
+2. **Test Backend API**:
    ```bash
-   curl -i https://accommodation-finder-backend.vercel.app/
+   curl -i https://<your-project>.vercel.app/api/rooms
    ```
-   *Expected Response*: `200 OK` $\rightarrow$ `"🚀 Server is running and connected to MongoDB"`
+   *Expected Response*: `200 OK` with JSON array `[]`.
 
-2. **Backend API Endpoint Check**:
+3. **Test Auth Route**:
    ```bash
-   curl -i https://accommodation-finder-backend.vercel.app/api/rooms
+   curl -i -X POST https://<your-project>.vercel.app/api/auth/register \
+     -H "Content-Type: application/json" \
+     -d '{"name":"Test User","email":"test@example.com","password":"testpassword123"}'
    ```
-   *Expected Response*: `200 OK` $\rightarrow$ `[]` (Array of room listings).
-
-3. **Frontend Browser Check**:
-   Open `https://accommodation-finder-frontend.vercel.app` in your web browser and verify the UI renders without console errors.
 
 ---
 
-## 📋 Vercel Files Configured in Repository
+## 📁 Repository Configuration Files
 
-- [`Backend/server.js`](file:///Users/manghnaniankit/Desktop/S63_Ankit_Capstone_AccommodationFinder/Backend/server.js): Exports `app` for Vercel serverless function compatibility while retaining local `app.listen()` support.
-- [`Backend/vercel.json`](file:///Users/manghnaniankit/Desktop/S63_Ankit_Capstone_AccommodationFinder/Backend/vercel.json): Configures `@vercel/node` builder and routes all `/api` traffic to `server.js`.
-- [`Frontend/client/vercel.json`](file:///Users/manghnaniankit/Desktop/S63_Ankit_Capstone_AccommodationFinder/Frontend/client/vercel.json): Configures SPA client-side route fallback to `index.html`.
+- [`vercel.json`](file:///Users/manghnaniankit/Desktop/S63_Ankit_Capstone_AccommodationFinder/vercel.json): Unified configuration that orchestrates both Frontend (`@vercel/static-build`) and Backend (`@vercel/node`) in a single project.
+- [`Backend/server.js`](file:///Users/manghnaniankit/Desktop/S63_Ankit_Capstone_AccommodationFinder/Backend/server.js): Express server exported as a serverless function handler.
+- [`.gitignore`](file:///Users/manghnaniankit/Desktop/S63_Ankit_Capstone_AccommodationFinder/.gitignore): Excludes `node_modules`, `.env`, and build outputs from Git tracking.
