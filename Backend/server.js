@@ -31,12 +31,14 @@ app.use("/api", roomRoutes);
 app.use("/api", userRoutes);
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log("✅ Connected to MongoDB"))
-.catch((err) => console.error("❌ MongoDB connection failed:", err));
+if (process.env.MONGO_URI) {
+  mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("✅ Connected to MongoDB"))
+  .catch((err) => console.error("❌ MongoDB connection failed:", err));
+}
 
 // Root Route
 app.get("/", (req, res) => {
@@ -49,7 +51,11 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Internal Server Error" });
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`🌐 Server running on http://localhost:${PORT}`);
-});
+// Start Server (only when run directly)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`🌐 Server running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
