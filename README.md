@@ -1,162 +1,341 @@
-Capstone Project
-***Student-Oriented Accommodation & Food Solution Platform***
+<div align="center">
 
-*Project Overview*
+# 🏠 Accommodation Finder
 
+### *Student-Oriented Accommodation & Housing Management Platform*
 
-This project aims to develop a web-based platform that connects students looking for accommodation with those who have vacant rooms or flats. It also integrates food solutions by collaborating with local tiffin services. The platform specifically targets students and working professionals facing accommodation and food challenges, particularly in Jagatpura, Jaipur, a hub of multiple universities and schools.
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-Express_v5-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose_v8-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![JWT](https://img.shields.io/badge/Auth-JWT_%2B_Bcrypt-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
 
-**Problem Statement**
+---
 
-1. Limited Hostel Capacity: University hostels can accommodate only a fraction of the admitted students, leaving many to search for PGs or flats. 		
-    (Student intake>>hostels availabe)
-2. Strict Hostel Rules & Poor Facilities: Hostels impose curfews and have limited facilities, making them less preferable for many students.
-3. Vacant Rooms & Financial Burden: Students living in rented flats with vacant rooms struggle to find flatmates, increasing their rental expenses.
-4. Difficulty for Freshers & Parents: New students and their families struggle to secure safe and comfortable accommodation before the academic session starts.
-5. Security Concerns for Female Students: Finding safe accommodation with security measures is a significant challenge.
-6. Food Management Issues: Students face difficulty in managing their food requirements while focusing on studies, and cooking is often not feasible.
+[![Frontend Deployment](https://img.shields.io/badge/Netlify-Frontend_Live-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://capstone-accommodationfinder.netlify.app/)
+[![Backend Deployment](https://img.shields.io/badge/Render-Backend_Live-46E3B7?style=flat-square&logo=render&logoColor=white)](https://s63-ankit-capstone-accommodationfinder.onrender.com)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg?style=flat-square)](https://opensource.org/licenses/ISC)
 
-**Proposed Solution**
+> A modern full-stack web application designed to connect students with available room listings, manage flatmate preferences, and simplify housing discovery around university campuses.
 
-1. Accommodation Matching
-    Students with vacant rooms can list their available spaces.
-    Students searching for accommodation can filter and connect with potential flatmates.
-    Customizable filters based on budget, location, furnishing, security, and amenities.
-    Premium verified listings for secure accommodations, especially for female students.
+</div>
 
-2. Batch-Based Flatmate Matching
-    New students (freshers) can register early and find flatmates from their own university and course batch.
-    Registration based on offer letters ensures authentic student matching.
-    Helps students share accommodation with their classmates, fostering better adjustment and collaboration.
+---
 
-3. Food Solution Integration
-    Partnering with local tiffin services to provide affordable, quality meal plans.
-    Subscription-based food services with user ratings and reviews.
-    Option to customize meal plans based on dietary preferences.
+## 📋 Table of Contents
 
+- [1. Problem Statement](#1-problem-statement)
+- [2. Project Purpose](#2-project-purpose)
+- [3. Technology Stack](#3-technology-stack)
+- [4. Project Architecture Overview](#4-project-architecture-overview)
+- [5. Implemented Features](#5-implemented-features)
+- [6. Frontend Setup](#6-frontend-setup)
+- [7. Backend Setup](#7-backend-setup)
+- [8. Database Setup](#8-database-setup)
+- [9. Environment Variables](#9-environment-variables)
+- [10. Installation Instructions](#10-installation-instructions)
+- [11. How to Run Locally](#11-how-to-run-locally)
+- [12. Available Scripts](#12-available-scripts)
+- [13. API Overview](#13-api-overview)
+- [14. Authentication Overview](#14-authentication-overview)
+- [15. Deployment Information](#15-deployment-information)
+- [16. Testing Instructions](#16-testing-instructions)
+- [17. Known Limitations & Technical Debt](#17-known-limitations--technical-debt)
 
-**Business Model & Monetization Strategy**
+---
 
-1. Basic Listings (Free): Students can list and search for accommodation for free.
-2. Premium Listings (Paid): Verified and featured listings with additional visibility.
-3. Subscription Plans: Paid access for users seeking roommates through advanced matching.
-4. Commission-Based Partnerships: Collaborations with brokers, landlords, and tiffin service providers.
-5. Verified Secure Accommodation: Listings with security measures (CCTV, security guards) targeted at female students.
+## 🎯 1. Problem Statement
 
+Students and young professionals relocating for higher education face significant hurdles when searching for accommodations:
+* **Hostel Deficit:** Institutional hostels frequently lack sufficient capacity for incoming student batches.
+* **Fragmented Information:** Information regarding vacant rooms, pricing, and amenities is scattered across offline notice boards or unverified social groups.
+* **Financial Burden:** Shared flats with unoccupied rooms lead to elevated rental expenses for existing tenants.
 
-**Future Planning & Expected Outcomes**
-1. A fully functional web application that effectively connects students for accommodation and food services.
-2. Initial traction among students in Jagatpura, Jaipur.
-3. Future plans to collaborate with real estate brokers, landlords, and food providers for expansion.
-4. Potential to scale the platform to other university hubs across India.
+---
 
-**Technical Implementation**
+## 💡 2. Project Purpose
 
-    Frontend: React.js (for an interactive user experience)
-    Backend: Node.js with Express.js (to handle API requests and data processing)
-    Database: MongoDB or PostgreSQL (to store user data, accommodation listings, and transactions)
-    Authentication: JWT-based authentication with Google/Facebook login integration
-    Hosting: AWS/GCP/DigitalOcean (for server and database deployment)
+The **Accommodation Finder** platform serves as a dedicated solution for student housing by offering:
+1. Structured user registration and authentication for verified student profiles.
+2. Room listing management (CRUD operations) enabling room owners to publish listing details (location, price, room type).
+3. Relational data associations between users and their listed properties.
 
+---
 
+## 🛠️ 3. Technology Stack
 
-**Conclusion**
-This project provides a structured and secure platform addressing critical student issues related to accommodation and food. With a strong business model and scope for future expansion, it has the potential to develop into a successful startup in the long run.
+<div align="center">
 
+| Layer | Technology / Package | Purpose |
+| :--- | :--- | :--- |
+| **Frontend** | React 19, Vite 6 | SPA Framework & Rapid Development Build Tool |
+| **Styling** | Tailwind CSS v4, PostCSS, Radix UI | Modern utility-first responsive styling |
+| **Backend** | Node.js, Express v5 | REST API Web Server |
+| **Database** | MongoDB, Mongoose v8 | Document Database & Object Data Modeling (ODM) |
+| **Security** | `jsonwebtoken`, `bcrypt` / `bcryptjs` | Password hashing & JWT token issuing |
+| **Dev Tools** | `nodemon`, `dotenv`, ESLint, CORS | Environment handling, hot-reloading & linting |
 
+</div>
 
-***Day to Day Planning***
+---
 
-📆 Week 1: Planning & Setup
-🗓️ Day 1 (Monday)
-✅ Finalize project idea (already done).
-✅ Create low-fid wireframe (basic UI layout).
-✅ Submit proof of low-fid design.
-🗓️ Day 2 (Tuesday)
-✅ Create high-fid wireframe (detailed UI with colors & elements).
-✅ Submit proof of hi-fid design.
-✅ Set up GitHub repo (README, issues, milestones).
-🗓️ Day 3 (Wednesday)
-✅ Create GitHub project board for tracking tasks.
-✅ Add at least 10 tasks spanning 10+ days.
-✅ Submit proof of milestone management.
-🗓️ Day 4 (Thursday)
-✅ Design database schema (ERD diagram).
-✅ Plan relationships between entities.
-✅ Submit proof of database schema.
-🗓️ Day 5 (Friday)
-✅ Set up backend server (Node.js + Express).
-✅ Implement GET API (fetch available rooms).
-🗓️ Day 6 (Saturday)
-✅ Implement POST API (add new listing).
-✅ Implement PUT API (update listing).
-🚀 Sunday: Break or catch up if needed
+## 🏗️ 4. Project Architecture Overview
 
-📆 Week 2: Backend Development
-🗓️ Day 7 (Monday)
-✅ Implement database read & write operations.
-✅ Implement relationships between entities (e.g., Users ↔ Rooms).
-🗓️ Day 8 (Tuesday)
-✅ Deploy backend server (Render/Railway).
-✅ Test API endpoints using Postman/Bruno.
-🗓️ Day 9 (Wednesday)
-✅ Initialize React frontend.
-✅ Set up React Router for navigation.
-🗓️ Day 10 (Thursday)
-✅ Implement frontend components for home & user dashboard.
-✅ Match frontend with hi-fid wireframe.
-🗓️ Day 11 (Friday)
-✅ Implement authentication (username/password login).
-✅ Secure API using JWT authentication.
-🗓️ Day 12 (Saturday)
-✅ Implement Google OAuth authentication.
-✅ Deploy frontend on Vercel/Netlify.
-🚀 Sunday: Break or catch up
+The repository follows a clean monorepo architecture split into client and server folders:
 
-📆 Week 3: Frontend & Features
-🗓️ Day 13 (Monday)
-✅ Implement update & delete functionalities for rooms.
-🗓️ Day 14 (Tuesday)
-✅ Implement file upload functionality (profile pics, room images).
-🗓️ Day 15 (Wednesday)
-✅ Deploy database schema updates (if needed).
-✅ Implement matching frontend UI with backend data.
-🗓️ Day 16 (Thursday)
-✅ Test complete app workflow (login, add room, search, book).
-✅ Fix any major UI/UX issues.
-🗓️ Day 17 (Friday)
-✅ Submit proof of completed frontend components.
-✅ Final UI refinements.
-🗓️ Day 18 (Saturday)
-✅ Get 5+ people to test the app.
-✅ Gather & document feedback.
-🚀 Sunday: Break or final catch-up
+```gss
+S63_Ankit_Capstone_AccommodationFinder/
+├── Backend/
+│   ├── controllers/
+│   │   ├── authController.js       # Authentication logic (Register / Login)
+│   │   └── roomController.js       # Independent room controllers
+│   ├── middleware/
+│   │   └── authMiddleware.js       # JWT validation middleware
+│   ├── models/
+│   │   ├── Room.js                 # Mongoose schema for Room entity
+│   │   └── User.js                 # Mongoose schema for User entity
+│   ├── routes/
+│   │   ├── authRoutes.js           # Auth endpoints (/api/auth)
+│   │   ├── roomRoutes.js           # Room & User endpoints (/api)
+│   │   └── userRoutes.js           # Auxiliary User endpoints (/api)
+│   ├── package.json
+│   └── server.js                   # Express entrypoint & Mongo connection
+├── Frontend/
+│   └── client/
+│       ├── public/
+│       ├── src/
+│       │   ├── components/
+│       │   │   ├── Footer.jsx      # Global footer component
+│       │   │   ├── Navbar.jsx      # Top navigation header
+│       │   │   └── RoomCard.jsx    # Room listing display card
+│       │   ├── App.jsx             # Root React component
+│       │   ├── main.jsx            # DOM render entrypoint
+│       │   └── index.css           # Global stylesheet
+│       ├── package.json
+│       └── vite.config.js
+└── README.md
+```
 
-📆 Week 4: Enhancements & Final Submission
-🗓️ Day 19 (Monday)
-✅ Implement update & delete functionalities (if not done).
-✅ Optimize code structure.
-🗓️ Day 20 (Tuesday)
-✅ Secure APIs with JWT tokens.
-✅ Implement rate-limiting & security measures.
-🗓️ Day 21 (Wednesday)
-✅ Test APIs again using Bruno/Postman.
-✅ Update API documentation.
-🗓️ Day 22 (Thursday)
-✅ Final bug fixes.
-✅ Ensure all Level 1 requirements are met.
-🗓️ Day 23 (Friday)
-✅ Submit proof of work for all completed tasks.
-🗓️ Day 24 (Saturday)
-✅ Final Submission 🎉
+---
 
+## ✨ 5. Implemented Features
 
-🚀 Sunday: Break or celebration
+### ⚡ Backend REST API
+- **User Authentication:** 
+  - `POST /api/auth/register` with `bcrypt` password hashing.
+  - `POST /api/auth/login` returning signed JWT bearer tokens.
+- **Room Management (CRUD):**
+  - `POST /api/rooms`: Create room listings and link to owner ObjectId.
+  - `GET /api/rooms`: Retrieve all listings populated with owner details (`name`, `email`).
+  - `PUT /api/rooms/:id`: Update existing room listing details.
+  - `DELETE /api/rooms/:id`: Delete listing and remove references from owner profile.
+- **Diagnostics & Utilities:** Middleware logger for HTTP requests and global 500 error handling.
 
-👋
+### 🎨 Frontend UI Componentry
+- **Navbar Header (`Navbar.jsx`):** Navigation header featuring application logo and menu links.
+- **Room Display Card (`RoomCard.jsx`):** Styled card component displaying room title, description, and monthly rent.
+- **Footer (`Footer.jsx`):** Standard copyright footer.
 
+---
 
-Backend deployment link =  https://s63-ankit-capstone-accommodationfinder.onrender.com
+## ⚙️ 6. Frontend Setup
 
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- `npm` or `yarn` package manager
 
-Frontend deployment link = https://capstone-accommodationfinder.netlify.app/
+---
+
+## ⚙️ 7. Backend Setup
+
+### Prerequisites
+- Node.js (v18 or higher)
+- Active MongoDB Database (Local instance or MongoDB Atlas cluster)
+
+---
+
+## 🗄️ 8. Database Setup
+
+The backend utilizes **MongoDB** managed through **Mongoose ORM schemas**.
+
+### Entity Schema Specs
+
+#### 👤 User Schema (`Backend/models/User.js`)
+```typescript
+{
+  name:        { type: String, required: true },
+  email:       { type: String, required: true, unique: true },
+  password:    { type: String, required: true, minlength: 6 },
+  roomsOwned:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'Room' }],
+  timestamps:  true
+}
+```
+
+#### 🏠 Room Schema (`Backend/models/Room.js`)
+```typescript
+{
+  roomType:   { type: String, required: true },
+  price:      { type: Number, required: true },
+  location:   { type: String, required: true },
+  owner:      { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  timestamps: true
+}
+```
+
+---
+
+## 🔑 9. Environment Variables
+
+Configure your environment settings by placing a `.env` file in the `Backend/` directory:
+
+```env
+# Server Listener Port
+PORT=5001
+
+# MongoDB Connection URL
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/<dbname>?retryWrites=true&w=majority
+
+# Secret key for signing JSON Web Tokens
+JWT_SECRET=your_jwt_secret_key_here
+```
+
+> [!WARNING]
+> Never commit actual `.env` files, passwords, or secret tokens into public source control repositories.
+
+---
+
+## 📦 10. Installation Instructions
+
+1. **Clone Repository:**
+   ```bash
+   git clone https://github.com/kalviumcommunity/S63_Ankit_Capstone_AccommodationFinder.git
+   cd S63_Ankit_Capstone_AccommodationFinder
+   ```
+
+2. **Install Backend Dependencies:**
+   ```bash
+   cd Backend
+   npm install
+   cd ..
+   ```
+
+3. **Install Frontend Dependencies:**
+   ```bash
+   cd Frontend/client
+   npm install
+   cd ../..
+   ```
+
+---
+
+## 🚀 11. How to Run Locally
+
+### Start Backend Service
+```bash
+cd Backend
+npm run dev
+```
+*Server starts on `http://localhost:5001` and connects to MongoDB.*
+
+### Start Frontend Client
+```bash
+cd Frontend/client
+npm run dev
+```
+*Vite launches application on `http://localhost:5173`.*
+
+---
+
+## 📜 12. Available Scripts
+
+| Location | Script | Command | Purpose |
+| :--- | :--- | :--- | :--- |
+| **Backend** | `npm run dev` | `nodemon server.js` | Launches backend with hot-reload |
+| **Backend** | `npm start` | `node server.js` | Runs production server process |
+| **Frontend** | `npm run dev` | `vite` | Launches Vite local dev server |
+| **Frontend** | `npm run build` | `vite build` | Generates static production bundle in `dist/` |
+| **Frontend** | `npm run lint` | `eslint .` | Runs static code analysis checks |
+
+---
+
+## 📡 13. API Overview
+
+Base Endpoint: `http://localhost:5001`
+
+### 🔑 Authentication Endpoints (`/api/auth`)
+
+```http
+POST /api/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "securepassword123"
+}
+```
+
+```http
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "securepassword123"
+}
+```
+
+### 🏠 Accommodation & User Endpoints (`/api`)
+
+| Method | Route | Description | Payload Example |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/rooms` | Fetch all rooms with owner info | N/A |
+| `POST` | `/api/rooms` | Create listing & associate user | `{"roomType": "1BHK", "price": 8000, "location": "Jagatpura", "userId": "<USER_ID>"}` |
+| `PUT` | `/api/rooms/:id` | Update room listing by ID | `{"price": 8500}` |
+| `DELETE` | `/api/rooms/:id` | Remove room listing by ID | N/A |
+| `GET` | `/api/users` | Fetch all users with `roomsOwned` | N/A |
+| `POST` | `/api/users` | Create user entry for testing | `{"name": "Jane", "email": "jane@example.com"}` |
+
+---
+
+## 🔐 14. Authentication Overview
+
+- Passwords are securely hashed with **Bcrypt** (10 rounds) upon registration.
+- Successful login issues a **JWT** payload `{ id: user._id }` valid for 1 day.
+- Auth middleware (`authMiddleware.js`) provides a `verifyToken` function for checking `Authorization: Bearer <token>` headers.
+
+> [!NOTE]
+> `verifyToken` is defined in `middleware/authMiddleware.js`. It is available for application to protected routes.
+
+---
+
+## 🌐 15. Deployment Information
+
+| Service | Host Provider | URL |
+| :--- | :--- | :--- |
+| **Backend API** | Render | [https://s63-ankit-capstone-accommodationfinder.onrender.com](https://s63-ankit-capstone-accommodationfinder.onrender.com) |
+| **Frontend UI** | Netlify | [https://capstone-accommodationfinder.netlify.app/](https://capstone-accommodationfinder.netlify.app/) |
+
+---
+
+## 🧪 16. Testing Instructions
+
+Manual testing can be performed using **cURL**, **Postman**, or **Bruno**.
+
+### Example cURL Request (Register User):
+```bash
+curl -X POST http://localhost:5001/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Test User", "email": "test@example.com", "password": "password123"}'
+```
+
+---
+
+## ⚠️ 17. Known Limitations & Technical Debt
+
+1. **Client API Connectivity:** The React frontend currently renders local mock data (`dummyRoom` in `App.jsx`) and has not yet integrated live `fetch`/`axios` calls to backend endpoints.
+2. **Empty Placeholders:** `Header.jsx` and `AccommodationList.jsx` are empty placeholder components.
+3. **Route Protections:** `verifyToken` middleware is available but not attached to room mutation routes.
+4. **Environment Secret Fallback:** JWT signing utilizes a default fallback string (`"your_jwt_secret"`) if `process.env.JWT_SECRET` is omitted.
+5. **Redundant Handlers:** Both `userRoutes.js` and `roomRoutes.js` contain `POST /users` and `GET /users` route definitions.
